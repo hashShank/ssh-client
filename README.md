@@ -1,13 +1,12 @@
-# SSH Client-Server Implementation (C++)
+# SSH Client-Server Implementation
 
-This project is a simplified SSH-like client and server built from scratch in C++. It demonstrates fundamental networking and encryption concepts including TCP sockets, Diffie-Hellman key exchange, XOR encryption (for demonstration), and basic protocol structure — all using raw system calls and C++17.
+This project is a simplified SSH-like client and server built from scratch in C++. It demonstrates fundamental networking and encryption concepts including TCP sockets, Diffie-Hellman key exchange and XOR encryption.
 
 ## Features
 
 - Simplified SSH-style communication over TCP  
 - Diffie-Hellman key exchange for shared secret  
-- XOR encryption of messages (for demo purposes)  
-- Modular codebase using headers and CMake  
+- XOR encryption of messages 
 - Both encrypted and unencrypted client/server modes  
 - No use of external crypto libraries  
 
@@ -73,7 +72,7 @@ This performs a Diffie-Hellman key exchange and sends an XOR-encrypted message f
 
 ### Encryption
 
-The message is XOR-ed with the shared secret (lower byte) before being sent over the socket.  
+The message is XOR-ed with the shared secret before being sent over the socket.  
 Decryption is done the same way on the receiver side.
 
 ## Educational Value
@@ -84,9 +83,8 @@ This project helps understand:
 - Manual key exchange using Diffie-Hellman  
 - Basic encryption/decryption logic  
 - Protocol design foundations  
-- Modular project structure with CMake
 
-## Disclaimer
+## License
 
 This project is for educational purposes only.  
 
