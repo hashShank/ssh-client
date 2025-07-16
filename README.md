@@ -1,90 +1,92 @@
 # SSH Client-Server Implementation (C++)
 
-This project is a simplified implementation of an SSH-like client and server built entirely from scratch in C++. It demonstrates core concepts such as client-server communication, encryption using classic Diffie-Hellman, and basic custom networking without relying on system socket headers or external cryptographic libraries.
-
-
----
+This project is a simplified SSH-like client and server built from scratch in C++. It demonstrates fundamental networking and encryption concepts including TCP sockets, Diffie-Hellman key exchange, XOR encryption (for demonstration), and basic protocol structure — all using raw system calls and C++17.
 
 ## Features
 
-- Simplified SSH-style communication over TCP
-- Optional Diffie-Hellman key exchange for encrypted messaging
-- Clean modular code structure using CMake
-- Completely self-contained — no external libraries
-- Custom replacements for `sys/socket.h`, `netinet/in.h`, etc.
-
----
+- Simplified SSH-style communication over TCP  
+- Diffie-Hellman key exchange for shared secret  
+- XOR encryption of messages (for demo purposes)  
+- Modular codebase using headers and CMake  
+- Both encrypted and unencrypted client/server modes  
+- No use of external crypto libraries  
 
 ## Components
 
 The project is structured around the following modules:
 
-- `main.cpp` – Unencrypted demo client-server communication
-- `main_client.cpp` – Encrypted client using DH
-- `main_server.cpp` – Encrypted server using DH
-- `include/crypto/DiffieHellman.hpp` – Basic DH key exchange
-- `include/network/MySocket.hpp` – Custom networking structs/functions
-- `src/crypto/DiffieHellman.cpp` – Implementation of DH
-- `CMakeLists.txt` – Modular CMake build setup
-
----
+1. **Unencrypted Client/Server** – Basic TCP client/server setup  
+2. **Encrypted Client/Server** – Uses DH key exchange and XOR encryption  
+3. **DiffieHellman** – Custom implementation of Diffie-Hellman  
+4. **Message Struct** – Handles simple serialization/deserialization  
+5. **CMakeLists.txt** – Modular build configuration
 
 ## Build Instructions
 
-You’ll need `cmake` and a C++17-compatible compiler.
+You'll need `cmake` and a C++17-compatible compiler.
 
 ```bash
-git clone https://github.com/your-username/ssh-client.git
-cd ssh-client
 mkdir build
 cd build
 cmake ..
 make
+```
 
-🚀 Usage
-Run Unencrypted (for demo)
+## Usage
 
+### Run Unencrypted Version
+
+Open a terminal and run:
+
+```bash
 ./ssh_unencrypted
+```
 
 This shows basic client-server communication without encryption.
-Run Encrypted
 
-Start in two terminals:
+### Run Encrypted Version
 
-# Terminal 1
+Use two terminals:
+
+**Terminal 1 (Server):**
+
+```bash
 ./ssh_server_encrypted
+```
 
-# Terminal 2
+**Terminal 2 (Client):**
+
+```bash
 ./ssh_client_encrypted
+```
 
-This will perform a Diffie-Hellman key exchange and send an XOR-encrypted message.
-Implementation Highlights
+This performs a Diffie-Hellman key exchange and sends an XOR-encrypted message from client to server.
 
-    Classic Diffie-Hellman (small prime) key exchange
+## Implementation Details
 
-    XOR-based encryption (for demo only)
+### Key Exchange
 
-    No system-level socket includes — replaced with manual struct/function definitions
+1. Client generates a DH public key and sends it to the server  
+2. Server generates its DH public key and sends it back  
+3. Both use the received key and their own private key to compute a shared secret  
+4. That shared secret is used for XOR encryption
 
-    Modular C++ architecture
+### Encryption
 
-    Custom modexp() used for safe exponentiation
+The message is XOR-ed with the shared secret (lower byte) before being sent over the socket.  
+Decryption is done the same way on the receiver side.
 
-Educational Value
+## Educational Value
 
-This project demonstrates:
+This project helps understand:
 
-    TCP socket programming in C++
+- TCP socket programming in C++  
+- Manual key exchange using Diffie-Hellman  
+- Basic encryption/decryption logic  
+- Protocol design foundations  
+- Modular project structure with CMake
 
-    Manual key exchange with Diffie-Hellman
+## Disclaimer
 
-    Simple encryption/decryption
+This project is for educational purposes only.  
 
-    Protocol design basics
-
-    CMake-based modular project structure
-
-License
-
-This project is for educational use only.
-Do not use for real-world security applications.

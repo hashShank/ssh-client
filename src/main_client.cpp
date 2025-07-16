@@ -20,16 +20,13 @@ int main() {
     DiffieHellman dh;
     uint64_t clientPubKey = dh.getPublicKey();
 
-    // Send client public key
     send(sock, &clientPubKey, sizeof(clientPubKey), 0);
     std::cout << "[Client] Sent public key: " << clientPubKey << "\n";
 
-    // Receive server's public key
     uint64_t serverPubKey;
     read(sock, &serverPubKey, sizeof(serverPubKey));
     std::cout << "[Client] Received server public key: " << serverPubKey << "\n";
 
-    // Compute shared secret
     uint64_t sharedSecret = dh.computeSharedSecret(serverPubKey);
     std::cout << "[Client] Shared secret: " << sharedSecret << "\n";
 

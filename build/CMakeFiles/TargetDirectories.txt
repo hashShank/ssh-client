@@ -1,5 +1,0 @@
-/Users/shashu03/Documents/VS Code projects/ssh-client/build/CMakeFiles/ssh_unencrypted.dir
-/Users/shashu03/Documents/VS Code projects/ssh-client/build/CMakeFiles/ssh_client_encrypted.dir
-/Users/shashu03/Documents/VS Code projects/ssh-client/build/CMakeFiles/ssh_server_encrypted.dir
-/Users/shashu03/Documents/VS Code projects/ssh-client/build/CMakeFiles/edit_cache.dir
-/Users/shashu03/Documents/VS Code projects/ssh-client/build/CMakeFiles/rebuild_cache.dir

@@ -11,32 +11,28 @@ int main() {
     const char* hostname = "localhost";  // or IP of SSH server
     const int port = 22;
 
-    // Create socket
     int sock = socket(AF_INET, SOCK_STREAM, 0);
     if (sock < 0) {
         perror("Socket creation failed");
         return 1;
     }
 
-    // Resolve hostname
     hostent* server = gethostbyname(hostname);
     if (!server) {
         std::cerr << "No such host: " << hostname << std::endl;
         return 1;
     }
 
-    sockaddr_in serv_addr{}; //zero initializes the structure
+    sockaddr_in serv_addr{}; // zero initializes the structure
     serv_addr.sin_family = AF_INET;
-    serv_addr.sin_port = htons(port); //host to network short, converts the port from machine's byte order to network byte order
+    serv_addr.sin_port = htons(port); // host to network short, converts the port from machine's byte order to network byte order
     std::memcpy(&serv_addr.sin_addr.s_addr, server->h_addr, server->h_length);
 
-    // Connect
     if (connect(sock, (sockaddr*)&serv_addr, sizeof(serv_addr)) < 0) {
         perror("Connection failed");
         return 1;
     }
 
-    // Read SSH version from server
     char buffer[256]{};
     ssize_t n = read(sock, buffer, 255);
     if (n < 0) {

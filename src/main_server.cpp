@@ -10,7 +10,6 @@ int main() {
     socklen_t addrlen = sizeof(address);
     char buffer[1024] = {0};
 
-    // Create socket
     server_fd = socket(AF_INET, SOCK_STREAM, 0);
     if (server_fd == -1) {
         std::cerr << "[Server] Failed to create socket\n";
@@ -21,12 +20,10 @@ int main() {
     int opt = 1;
     setsockopt(server_fd, SOL_SOCKET, SO_REUSEADDR | SO_REUSEPORT, &opt, sizeof(opt));
 
-    // Set up server address
     address.sin_family = AF_INET;
     address.sin_addr.s_addr = INADDR_ANY;
     address.sin_port = htons(PORT);
 
-    // Bind socket to port
     if (bind(server_fd, (struct sockaddr*)&address, sizeof(address)) < 0) {
         std::cerr << "[Server] Bind failed\n";
         return 1;
@@ -53,7 +50,6 @@ int main() {
     DiffieHellman dh;
     uint64_t serverPubKey = dh.getPublicKey();
 
-    // Receive client's public key
     uint64_t clientPubKey;
     ssize_t bytesRead = read(new_socket, &clientPubKey, sizeof(clientPubKey));
     if (bytesRead <= 0) {
@@ -63,15 +59,12 @@ int main() {
 
     std::cout << "[Server] Received client public key: " << clientPubKey << "\n";
 
-    // Send server's public key
     send(new_socket, &serverPubKey, sizeof(serverPubKey), 0);
     std::cout << "[Server] Sent server public key: " << serverPubKey << "\n";
 
-    // Compute shared secret
     uint64_t sharedSecret = dh.computeSharedSecret(clientPubKey);
     std::cout << "[Server] Shared secret: " << sharedSecret << "\n";
 
-    // Receive encrypted message
     bytesRead = read(new_socket, buffer, sizeof(buffer));
     if (bytesRead <= 0) {
         std::cerr << "[Server] Failed to receive message from client.\n";
@@ -80,7 +73,6 @@ int main() {
 
     std::cout << "[Server] Encrypted message received.\n";
 
-    // Decrypt message
     std::string decrypted;
     for (int i = 0; buffer[i] != '\0'; ++i) {
         decrypted += buffer[i] ^ (sharedSecret & 0xFF);
@@ -88,7 +80,6 @@ int main() {
 
     std::cout << "[Server] Decrypted message: " << decrypted << "\n";
 
-    // Close sockets
     close(new_socket);
     close(server_fd);
     std::cout << "[Server] Connection closed.\n";
