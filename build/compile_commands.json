@@ -1,0 +1,32 @@
+[
+{
+  "directory": "/Users/shashu03/Documents/VS Code projects/ssh-client/build",
+  "command": "/usr/bin/clang++ -I\"/Users/shashu03/Documents/VS Code projects/ssh-client/include\" -g -std=gnu++17 -arch x86_64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk -o CMakeFiles/ssh_unencrypted.dir/src/main.cpp.o -c \"/Users/shashu03/Documents/VS Code projects/ssh-client/src/main.cpp\"",
+  "file": "/Users/shashu03/Documents/VS Code projects/ssh-client/src/main.cpp",
+  "output": "CMakeFiles/ssh_unencrypted.dir/src/main.cpp.o"
+},
+{
+  "directory": "/Users/shashu03/Documents/VS Code projects/ssh-client/build",
+  "command": "/usr/bin/clang++ -I\"/Users/shashu03/Documents/VS Code projects/ssh-client/include\" -g -std=gnu++17 -arch x86_64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk -o CMakeFiles/ssh_client_encrypted.dir/src/main_client.cpp.o -c \"/Users/shashu03/Documents/VS Code projects/ssh-client/src/main_client.cpp\"",
+  "file": "/Users/shashu03/Documents/VS Code projects/ssh-client/src/main_client.cpp",
+  "output": "CMakeFiles/ssh_client_encrypted.dir/src/main_client.cpp.o"
+},
+{
+  "directory": "/Users/shashu03/Documents/VS Code projects/ssh-client/build",
+  "command": "/usr/bin/clang++ -I\"/Users/shashu03/Documents/VS Code projects/ssh-client/include\" -g -std=gnu++17 -arch x86_64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk -o CMakeFiles/ssh_client_encrypted.dir/src/crypto/DiffieHellman.cpp.o -c \"/Users/shashu03/Documents/VS Code projects/ssh-client/src/crypto/DiffieHellman.cpp\"",
+  "file": "/Users/shashu03/Documents/VS Code projects/ssh-client/src/crypto/DiffieHellman.cpp",
+  "output": "CMakeFiles/ssh_client_encrypted.dir/src/crypto/DiffieHellman.cpp.o"
+},
+{
+  "directory": "/Users/shashu03/Documents/VS Code projects/ssh-client/build",
+  "command": "/usr/bin/clang++ -I\"/Users/shashu03/Documents/VS Code projects/ssh-client/include\" -g -std=gnu++17 -arch x86_64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk -o CMakeFiles/ssh_server_encrypted.dir/src/main_server.cpp.o -c \"/Users/shashu03/Documents/VS Code projects/ssh-client/src/main_server.cpp\"",
+  "file": "/Users/shashu03/Documents/VS Code projects/ssh-client/src/main_server.cpp",
+  "output": "CMakeFiles/ssh_server_encrypted.dir/src/main_server.cpp.o"
+},
+{
+  "directory": "/Users/shashu03/Documents/VS Code projects/ssh-client/build",
+  "command": "/usr/bin/clang++ -I\"/Users/shashu03/Documents/VS Code projects/ssh-client/include\" -g -std=gnu++17 -arch x86_64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk -o CMakeFiles/ssh_server_encrypted.dir/src/crypto/DiffieHellman.cpp.o -c \"/Users/shashu03/Documents/VS Code projects/ssh-client/src/crypto/DiffieHellman.cpp\"",
+  "file": "/Users/shashu03/Documents/VS Code projects/ssh-client/src/crypto/DiffieHellman.cpp",
+  "output": "CMakeFiles/ssh_server_encrypted.dir/src/crypto/DiffieHellman.cpp.o"
+}
+]
