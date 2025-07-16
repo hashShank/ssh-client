@@ -1,0 +1,18 @@
+# Ignore build files and temporary artifacts
+build/
+*.o
+*.out
+*.exe
+
+# macOS system files
+.DS_Store
+
+# VSCode settings
+.vscode/
+
+# CMake build files
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+compile_commands.json
